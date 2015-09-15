@@ -1,10 +1,11 @@
+#!/usr/bin/python2
 import urllib
 import json
 import datetime
 from lxml.html import fromstring
 from lxml.html import tostring
 def getDate(day, month, year):
-    months=['Января','Февраля','Марта','Апреля','Майя','Июня','Июля','Августа','Сентября','Октября','Ноября','Декабря'];
+    months=['ГџГ­ГўГ Г°Гї','Г”ГҐГўГ°Г Г«Гї','ГЊГ Г°ГІГ ','ГЂГЇГ°ГҐГ«Гї','ГЊГ Г©Гї','Г€ГѕГ­Гї','Г€ГѕГ«Гї','ГЂГўГЈГіГ±ГІГ ','Г‘ГҐГ­ГІГїГЎГ°Гї','ГЋГЄГІГїГЎГ°Гї','ГЌГ®ГїГЎГ°Гї','Г„ГҐГЄГ ГЎГ°Гї'];
     month = int(month) - 1;
     return str(day+" "+months[month]+" "+year);
 def getData(url):
@@ -28,11 +29,11 @@ def getData(url):
     UrlDate = ".//*[@id='content']/div[2]/div[2]/div[3]/text()";
     date = page.xpath(UrlDate);
     mydate = date[0].encode("cp1251").split(",");
-    if(mydate[0]=="Сегодня"):
+    if(mydate[0]=="Г‘ГҐГЈГ®Г¤Г­Гї"):
         dateArr = str(datetime.date.today()).split("-");
         dateVideo = getDate(dateArr[2], dateArr[1], dateArr[0]);
     else:
-        if(mydate[0]=="Вчера"):
+        if(mydate[0]=="Г‚Г·ГҐГ°Г "):
             dateArr = str(datetime.date.today() - datetime.timedelta(days=1)).split("-");
             dateVideo = getDate(dateArr[2], dateArr[1], dateArr[0]);
         else:
