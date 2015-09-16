@@ -57,10 +57,10 @@ def getResult(url):
     #jsonResult = [];
     for item in UrlVideo:
         #jsonResult.append(getData(item));
-        with open('data.json', 'a') as outfile:json.dump(getData(item), outfile, sort_keys = True, indent = 4, ensure_ascii = False);
-        f = open('data.json', 'a');
-        f.write(",");
-        f.close();
+        with open('pornoboss.json', 'a') as outfile:
+            json.dump(getData(item), outfile, ensure_ascii = False);
+            outfile.write(','+'\n');
+        
 def main():
     i=1;
     url = "http://pornoboss.tv";
